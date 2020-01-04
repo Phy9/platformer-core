@@ -1,0 +1,21 @@
+{
+    "tilemap": {
+        "name": "test.tilemap",
+        "substitute": {
+            "NAME": "NAME2",
+            "NAME2": "empty"
+        }
+    },
+    "begin": [1, 7],
+    "end": [13, 1],
+    "camera": {
+        "type": "fixed",
+        "offset": [8, 4.5]
+    },
+    "background": {
+        "path": "backdrops/sky.png",
+        "image-scale": 8,
+        "scale": 0.5,
+        "offset": [16, 9]
+    }
+}
