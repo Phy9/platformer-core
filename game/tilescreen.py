@@ -5,4 +5,4 @@ from myutils import colors, consts, options
 
 class TileScreen(Screen):
     def __init__(self):
-        super().__init__()  # TODO: deprecate parent init
+        super().__init__()

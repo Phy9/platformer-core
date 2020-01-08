@@ -5,12 +5,12 @@ import sys, os
 import pygame
 
 # Local files
-import myutils
+from myutils import colors, consts, options
 
 # Set up Pygame window
 pygame.init()
-win = pygame.display.set_mode(myutils.consts.WN_RES)
-pygame.display.set_caption(myutils.consts.WN_TITLE)
+win = pygame.display.set_mode(consts.WN_RES)
+pygame.display.set_caption(consts.WN_TITLE)
 
 # Other setups
 
@@ -18,7 +18,7 @@ pygame.display.set_caption(myutils.consts.WN_TITLE)
 
 running = 1
 clock = pygame.time.Clock()
-FPS = myutils.consts.WN_FPS
+FPS = consts.WN_FPS
 
 while running:
     clock.tick_busy_loop(FPS)
@@ -27,7 +27,7 @@ while running:
         deltaTime = 0
         running = 2
     elif running == 2:
-        WN_FPS = min(1 / (2 / myutils.consts.WN_FPS - deltaTime), 240)  # Hold FPS stable
+        WN_FPS = min(1 / (2 / consts.WN_FPS - deltaTime), 240)  # Hold FPS stable
 
     # Events
     events = pygame.event.get()
@@ -40,7 +40,7 @@ while running:
             break
 
     # Draw
-    win.fill(myutils.colors.rgb("#fff"))
+    win.fill(colors.rgb("#fff"))
     pygame.display.flip()
 
 # Quit
