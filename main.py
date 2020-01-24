@@ -1,12 +1,13 @@
 # Integrated modules
-import sys, os
+import sys
+import os
 
 # Installed modules
 import pygame
 
 # Local files
 from myutils import colors, consts, options
-
+from game import level, player, scene, tilescreen
 # Set up Pygame window
 pygame.init()
 win = pygame.display.set_mode(consts.WN_RES)
@@ -19,7 +20,8 @@ pygame.display.set_caption(consts.WN_TITLE)
 running = 1
 clock = pygame.time.Clock()
 FPS = consts.WN_FPS
-
+thislevel = level.Level("test")
+thislevel.init_camera(thislevel.level["camera"])
 while running:
     clock.tick_busy_loop(FPS)
     deltaTime = clock.get_time()
@@ -27,7 +29,8 @@ while running:
         deltaTime = 0
         running = 2
     elif running == 2:
-        WN_FPS = min(1 / (2 / consts.WN_FPS - deltaTime), 240)  # Hold FPS stable
+        WN_FPS = min(1 / (2 / consts.WN_FPS - deltaTime),
+                     240)  # Hold FPS stable
 
     # Events
     events = pygame.event.get()
@@ -40,7 +43,10 @@ while running:
             break
 
     # Draw
-    win.fill(colors.rgb("#fff"))
+    thislevel.draw()
+    win.fill(colors.rgb("#fff"))  # Clear canvas
+    win.blit(thislevel.image, (0, 0), area=thislevel.camera_area())
+    # win.blit(thislevel.image, (0, 0))
     pygame.display.flip()
 
 # Quit

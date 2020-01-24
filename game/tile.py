@@ -1,3 +1,14 @@
+"""
+
+ ###
+ #  #                             #          #
+ #  # #### #### ### #### ###  ### ## #### ####
+ #  # # #  #  # #   # #  #   #  # #  # #  #  #
+ ###   ### #### #    ### ### #### ##  ### ####
+           #
+
+"""
+
 import pathlib
 
 import pygame
@@ -7,9 +18,6 @@ from myutils import colors, consts, options
 """
  * The most general class to represent a terrain tile
  * @extends pygame.sprite.Sprite
- * @field image [inherited] the image used on the tile
- * @field mask [inherited] the mask of the sprite, typically generated from the image
- * @field rect [inherited] the rectangle describing the position and size of the tile, used in collision calculations and renderng
  * @field pos list of x (pos[0]) and y (pos[1]) coordinates, in tile units (NOT pixels)
 """
 class Tile(pygame.sprite.Sprite):
@@ -17,12 +25,7 @@ class Tile(pygame.sprite.Sprite):
         "Handle unwanted situations, such as image table not initialized, with TileException."
     _image_table = {}
     _rect_table = {}
-    """
-     * A self-called static method in attempt to initialize all tile images in order to save resource and improve game fluency
-     * @throws TileException when there are no files qualifying for tile images in the designated directory (./resources/images/tiles/)
-     * @returns None
-     * @related pathlib, pygame.image, Tile.TileException
-    """
+    # A self-called static method in attempt to initialize all tile images in order to save resource and improve game fluency
     @staticmethod
     def init_image():
         # Reads images from the resources/images/tiles folder
@@ -41,9 +44,6 @@ class Tile(pygame.sprite.Sprite):
      * @param self [ignored] a reference to the object self
      * @param pos list/tuple of xy-coordinates in tile units (Not pixels)
      * @param imageid an available key (image ID) in the class attribute `_image_table`
-     * @throws TileException when at least one actual parameter is invalid
-     * @return None
-     * @related pygame.sprite Tile
     """
     def __init__(self, pos, imageid):
         if not isinstance(pos, (list, tuple)) or pos.length != 2:
@@ -58,3 +58,9 @@ class Tile(pygame.sprite.Sprite):
         # TODO: Mask
     # TODO: update_rect_xy
     # TODO: Masking
+
+__all__ = [Tile]
+
+'''
+
+'''
