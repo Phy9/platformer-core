@@ -33,7 +33,7 @@ def init_image():
     if not path_to_images:
         print("No tile images found!", file=sys.stderr)
     for p in path_to_images:
-        image_table[p.name] = pygame.image.load(str(p))
+        image_table[p.name] = pygame.transform.scale(pygame.image.load(str(p)), (consts.TILE_W, consts.TILE_H))
 
 init_image()
 
@@ -84,6 +84,8 @@ class TileScreen(pygame.sprite.Sprite):
         for x in range(self.tilemap.width):
             for y in range(self.tilemap.height):
                 tilename = self.tilemap.tile[self.tilemap.map[y][x]]
+                if tilename == "empty":
+                    continue
                 tileimage = image_table[tilename+'.png']
                 self.image.blit(tileimage, (x*consts.TILE_W, y*consts.TILE_H))
         self.need_redraw = False

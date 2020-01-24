@@ -10,7 +10,7 @@
     "end": [13, 1],
     "camera": {
         "type": "fixed",
-        "offset": [8, 9]
+        "offset": [8, 4.5]
     },
     "background": {
         "path": "backdrops/sky.png",

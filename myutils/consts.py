@@ -1,11 +1,10 @@
 # Window settings
 
-WN_RES = (256, 144)
+WN_RES = (512, 288)
 WN_FPS = 60
 WN_TITLE = "Platformer Core"
 
 # Tile properties
 
-TILE_W = 8
-TILE_H = 8
-TILE_SCALE = 4
+TILE_W = 32
+TILE_H = 32
