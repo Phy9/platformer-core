@@ -31,7 +31,7 @@ class Scene(pygame.sprite.Sprite):
     def __init__(self, dimensions, subsprites=None):
         super().__init__()
         self.dimensions = dimensions
-        self.image = pygame.Surface(dimensions)
+        self.image = pygame.Surface(dimensions, pygame.SRCALPHA)
         self.rect = self.image.get_rect()
         self.group = SceneGroup()
         if subsprites:

@@ -20,7 +20,7 @@ pygame.display.set_caption(consts.WN_TITLE)
 running = 1
 clock = pygame.time.Clock()
 FPS = consts.WN_FPS
-thislevel = level.Level("test")
+thislevel = level.Level("test", camimg = win)
 thislevel.init_camera(thislevel.level["camera"])
 while running:
     clock.tick_busy_loop(FPS)
@@ -43,9 +43,9 @@ while running:
             break
 
     # Draw
-    thislevel.draw()
     win.fill(colors.rgb("#fff"))  # Clear canvas
-    win.blit(thislevel.image, (0, 0), area=thislevel.camera_area())
+    thislevel.draw()
+    # win.blit(thislevel.image, (0, 0), area=thislevel.camera_area())
     # win.blit(thislevel.image, (0, 0))
     pygame.display.flip()
 

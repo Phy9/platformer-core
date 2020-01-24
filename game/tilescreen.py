@@ -67,13 +67,13 @@ class TileScreen(pygame.sprite.Sprite):
     def __init__(self, level):
         self.level = level
         self.tilemapname = level["tilemap"]["name"]
-        self.tilemap=TileMap("resources/tilemaps/" + self.tilemapname)
-        self.sub=level["tilemap"]["substitute"]
-        self.dimensions=consts.WN_RES
+        self.tilemap = TileMap("resources/tilemaps/" + self.tilemapname)
+        self.sub = level["tilemap"]["substitute"]
+        self.dimensions = (self.tilemap.width * consts.TILE_W, self.tilemap.height * consts.TILE_H)
         for i, v in self.sub.items():
             self.tilemap.substitute(i, v)
         super().__init__()
-        self.image = pygame.Surface((self.tilemap.width * consts.TILE_W, self.tilemap.height * consts.TILE_H))
+        self.image = pygame.Surface(self.dimensions, pygame.SRCALPHA)
         self.rect = self.image.get_rect()
         # TODO: process self.rect
         self.need_redraw = True

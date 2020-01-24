@@ -1,6 +1,6 @@
 # Window settings
 
-WN_RES = (128, 72)
+WN_RES = (256, 144)
 WN_FPS = 60
 WN_TITLE = "Platformer Core"
 
